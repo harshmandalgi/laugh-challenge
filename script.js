@@ -18,8 +18,8 @@ var scorePlayer = false;
 
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
-  faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
+  // faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
+  // faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
   faceapi.nets.faceExpressionNet.loadFromUri('./models'),
   
 ]).then(startVideo);
@@ -49,11 +49,11 @@ video.addEventListener('play', () => {
 function happyFacedetected() {
   let currentScore = parseInt(document.getElementById('score').innerText);
   if (currentScore == 0) {
-    snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);
-    
+    snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);  
   }  
   else
     snackNotif(Laugh[parseInt(Math.random() * Laugh.length)]);
+
   document.getElementById('score').innerHTML = currentScore + 1;
   scorePlayer = false;
 }
