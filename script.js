@@ -1,4 +1,5 @@
-const video = document.getElementById('video')
+const video = document.getElementById('video');
+var scorePlayer = true;
 
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
@@ -13,7 +14,7 @@ function startVideo() {
     { video: {} },
     stream => video.srcObject = stream,
     err => console.error(err)
-  )
+  );
 }
 
 startVideo();
@@ -25,11 +26,20 @@ video.addEventListener('play', () => {
       new faceapi.TinyFaceDetectorOptions())
       .withFaceExpressions()
     if (detections[0].expressions.happy > 0.3)
-      happyFacedetected();  
+      if (scorePlayer)
+        happyFacedetected();  
   }, 1000)
-})
+});
 
 function happyFacedetected() {
   document.getElementById('score').innerHTML = parseInt(document.getElementById('score').innerText) + 1;
+  scorePlayer = false;
+}
+
+document.getElementById('reveal_face').onclick = function () {
+  if (document.getElementById('reveal_face').checked)
+    document.getElementById('video').classList.remove('hide-video');
+  else
+    document.getElementById('video').classList.add('hide-video');
 }
 

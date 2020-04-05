@@ -1,0 +1,46 @@
+.split {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  width: 25%;
+  left: 0;
+  background-color: #ffffff;
+}
+
+.right {
+  width: 75%;
+  right: 0;
+  background-color: #e4e7eb;
+  
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.centered-score {
+  text-align: center;
+}
+
+.up {
+  height: 30%;
+}
+
+.down {
+  width: 100%;
+}
+
+.hide-video {
+  visibility: hidden;
+}
+
