@@ -1,12 +1,11 @@
 var firstLaugh = [
   'You laughed! :P',
-  'Nooooooo! You Laughed!!',
-  'You Laughed! Dont Laugh you must stay strong!'
+  'Nooooooo! You Laughed!!'
 ];
 
 var Laugh = [
   'lol :D You laughed again',
-  'You laughed! Concentrate!!!!!'
+  'You laughed?! Concentrate!!!!!'
 ]; 
 
 var noLaugh = [

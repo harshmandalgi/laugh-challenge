@@ -22,7 +22,9 @@ function startChallenge() {
   document.getElementById('start-challenge').disabled = true;
   var i = 0;
   boketLink = 'https://laugh-challenge.s3.amazonaws.com/';
-  scorePlayer = true;
+  setTimeout(function() {
+    scorePlayer = true;
+  }, 3000);
   var videoPlayer = document.getElementById('challenge');
   videoPlayer.src = boketLink+fileArray[0]+'.mp4';
   videoPlayer.onended = function () {
@@ -31,7 +33,9 @@ function startChallenge() {
     if (i < fileArray.length-1) {
       i++;
       videoPlayer.src = boketLink+fileArray[i]+'.mp4';
-      scorePlayer = true;
+      setTimeout(function() {
+        scorePlayer = true;
+      }, 3000);
     } else {
       snackNotif('Challenge Complete', 5000);
       document.getElementById('playlist-ready').innerHTML = 'Challenge Complete!';
