@@ -17,8 +17,11 @@ request.onreadystatechange = function () {
     }
 }
 
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
 function startChallenge() {
-  // console.log(fileArray);
+  fileArray = shuffle(fileArray);
   document.getElementById('start-challenge').disabled = true;
   var i = 0;
   boketLink = 'https://laugh-challenge.s3.amazonaws.com/';
