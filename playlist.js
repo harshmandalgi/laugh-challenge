@@ -6,11 +6,13 @@ request.onreadystatechange = function () {
     if (request.readyState === 4 && request.status === 200) {
         var type = request.getResponseHeader('Content-Type');
         if (type.indexOf("text") !== 1) {
-            fileArray = request.responseText.split('\n');
+          fileArray = request.responseText.split('\n');
+          setTimeout(function() {
             document.getElementById('playlist-ready').innerHTML = 'Challenge Playlist Ready!';
-            snackNotif('Challenge Playlist Ready!')
-            document.getElementById('start-challenge').disabled = false;
-            // console.log(fileArray);
+          snackNotif('Challenge Playlist Ready!')
+          document.getElementById('start-challenge').disabled = false;
+          }, 2000);
+          // console.log(fileArray);
         }
     }
 }
@@ -30,9 +32,10 @@ function startChallenge() {
       i++;
       videoPlayer.src = boketLink+fileArray[i]+'.mp4';
       scorePlayer = true;
+    } else {
+      snackNotif('Challenge Complete', 5000);
+      document.getElementById('playlist-ready').innerHTML = 'Challenge Complete!';
     }
-    else
-      snackNotif('Challenge Complete', 7000);
   }
 }
 

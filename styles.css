@@ -29,6 +29,7 @@
 }
 
 .centered-score {
+  position: relative;
   text-align: center;
 }
 
@@ -42,6 +43,11 @@
 
 .hide-video {
   visibility: hidden;
+}
+
+#rules {
+  position: relative;
+  left: 20%;
 }
 
 #snackbar {
