@@ -1,5 +1,5 @@
 const video = document.getElementById('video');
-var scorePlayer = true;
+var scorePlayer = false;
 
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
