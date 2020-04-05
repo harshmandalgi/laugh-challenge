@@ -1,3 +1,19 @@
+var firstLaugh = [
+  'You laughed! :P',
+  'Nooooooo! You Laughed!!',
+  'You Laughed! Dont Laugh you must stay strong!'
+];
+
+var Laugh = [
+  'lol :D You laughed again',
+  'You laughed! Concentrate!!!!!'
+]; 
+
+var noLaugh = [
+  'Nice!',
+  'Stone face!!'
+];
+
 const video = document.getElementById('video');
 var scorePlayer = false;
 
@@ -32,7 +48,14 @@ video.addEventListener('play', () => {
 });
 
 function happyFacedetected() {
-  document.getElementById('score').innerHTML = parseInt(document.getElementById('score').innerText) + 1;
+  let currentScore = parseInt(document.getElementById('score').innerText);
+  if (currentScore == 0) {
+    snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);
+    
+  }  
+  else
+    snackNotif(Laugh[parseInt(Math.random() * Laugh.length)]);
+  document.getElementById('score').innerHTML = currentScore + 1;
   scorePlayer = false;
 }
 
