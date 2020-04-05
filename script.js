@@ -5,12 +5,12 @@ var firstLaugh = [
 
 var Laugh = [
   'lol :D You laughed again',
-  'You laughed?! Concentrate!!!!!'
+  'You laughed?! :P '
 ]; 
 
 var noLaugh = [
-  'Nice!',
-  'Stone face!!'
+  'Stone face!!',
+  'Nice!'
 ];
 
 const video = document.getElementById('video');
