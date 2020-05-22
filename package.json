@@ -4,7 +4,8 @@
   "description": "Rules of the Challenge:",
   "main": "js/face-api.min.js",
   "dependencies": {
-    "bootstrap": "^4.5.0"
+    "bootstrap": "^4.5.0",
+    "sass": "^1.26.5"
   },
   "devDependencies": {},
   "scripts": {

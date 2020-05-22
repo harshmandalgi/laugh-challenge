@@ -2,3 +2,4 @@
 node_modules
 .idea
 /scss/.sass-cache/
+/.sass-cache/
