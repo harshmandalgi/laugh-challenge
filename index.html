@@ -1,44 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" >
-  <title>Document</title>
-  <script defer src="face-api.min.js"></script>
-  <script defer src="script.js"></script>
-  <script src="playlist.js"></script>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <script defer src="js/face-api.min.js"></script>
+    <script defer src="js/script.js"></script>
+    <script src="js/playlist.js"></script>
+    <link href="css/main.css" rel="stylesheet">
 </head>
-<body>
-  <div class='split left'>
-    <div class="up centered-score">
-      <button onclick='startChallenge()' id='start-challenge' disabled='true'>Start Challenge</button><br>
-      <p id='playlist-ready'>generating challenge playlist..</p>
-      <img height="100px" width="100px" src="laugh_emoji1.jpg" alt="laugh emoji">
-      <h2>Score: <span id='score'>0</span></h2>
-      <input type="checkbox" name="reveal_face" id="reveal_face" checked><label>Show webcam feed</label>
+<body class="bg-white text-center d-flex h-100">
+    <div class="container d-flex p-3 mx-auto flex-column">
+        <header class="mb-5">
+            <nav class="nav justify-content-center float-right">
+                <div class="nav-link">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="darkSwitch">
+                        <label class="custom-control-label" for="darkSwitch">Switch to the Dark Side</label>
+                    </div>
+                    <script src="js/dark-mode-switch.min.js"></script>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <div class="row" style="margin-top: 30px;">
+                <div class="col-md-3">
+                    <div>
+                        <button class="btn btn-primary btn-lg btn-block" disabled="true" id='start-challenge' onclick='startChallenge()'>Start Challenge</button>
+                        <br>
+                        <p class="text-center medium" id='playlist-ready'>Loading fetching challenges...</p>
+                        <img alt="laugh emoji" height="100px" src="assets/laugh_emoji1.jpg" width="100px">
+                        <h2>Score: <span id='score'>0</span></h2>
+                        <input checked id="reveal_face" name="reveal_face" type="checkbox">
+                        <label for="reveal_face">Show webcam feed</label>
+                    </div>
+                    <div class='w-100 custom-card'>
+                        <video autoplay height="30%" id="video" muted width="100%"></video>
+                    </div>
+                </div>
+                <div class="col-lg">
+                    <div id='rules' class="text-left w-100">
+                        <p class="text-left">Rules of the 'Try Not To Laugh' Challenge:</p>
+                        <div>
+                            <div class="custom-card text-left">You have to watch all the videos without smiling or laughing.</div>
+                            <div class="custom-card text-left">For every video, if you laugh or smile, score will be incremented by 1.</div>
+                            <div class="custom-card text-left">To start the challenge, wait till the &#39;Challenge playlist&#39; is generated then press the &#39;Start
+                                Challenge&#39; button on top left corner.
+                            </div>
+                            <div class="custom-card">
+                                <div>
+                                    <video autobuffer autoplay class="w-100" controls height="100%" id="challenge" width="100%">
+                                        <source type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <div class='down centered'>
-      <video id="video" width="85%" height="30%" autoplay muted></video>
-    </div>  
-  </div>
-  
-  <div class='split right'>
-    <div id='rules'>
-      <p><strong>Rules of the 'Try Not To Laugh' Challenge:</strong></p>
-      <ul>
-        <li>You have to watch all the videos without smiling or laughing.</li>
-        <li>For every video, if you laugh or smile, score will be incremented by 1.</li>
-        <li>To start the challenge, wait till the &#39;Challenge playlist&#39; is generated then press the &#39;Start Challenge&#39; button on top left corner.</li>
-      </ul>
-    </div>
-    
-    <video class="centered" id="challenge" height="60%" width="80%" autoplay autobuffer controls>
-      <source type="video/mp4">
-    Your browser does not support the video tag.
-    </video>
-  </div>
-  <div id="snackbar"></div>
 </body>
 </html>
