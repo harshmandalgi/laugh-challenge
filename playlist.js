@@ -36,18 +36,18 @@ function startChallenge() {
   }, 3000);
   var videoPlayer = document.getElementById('challenge');
   // fetching videos from s3 link
-  // videoPlayer.src = boketLink+fileArray[0]+'.mp4';
+  videoPlayer.src = boketLink+fileArray[0]+'.mp4';
   // fetching videos directly from array element text, in this case we are feeding URLs directly into playlist file
-  videoPlayer.src = fileArray[0];
+  // videoPlayer.src = fileArray[0];
   videoPlayer.onended = function () {
     if (scorePlayer)
       snackNotif(noLaugh[parseInt(Math.random() * noLaugh.length)]);
     if (i < fileArray.length-1) {
       i++;
       // fetching videos from s3 link
-      //videoPlayer.src = boketLink+fileArray[i]+'.mp4';
+      videoPlayer.src = boketLink+fileArray[i]+'.mp4';
       // fetching videos directly from array element text, in this case we are feeding URLs directly into playlist file
-      videoPlayer.src = fileArray[i];
+      // videoPlayer.src = fileArray[i];
       setTimeout(function() {
         scorePlayer = true;
       }, 3000);
