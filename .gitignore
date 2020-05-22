@@ -1,3 +1,4 @@
 *.mp4
 node_modules
 .idea
+/scss/.sass-cache/
