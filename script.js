@@ -40,7 +40,7 @@ video.addEventListener('play', () => {
     const detections = await faceapi.detectAllFaces(video, 
       new faceapi.TinyFaceDetectorOptions())
       .withFaceExpressions()
-    if (detections[0].expressions.happy > 0.3)
+    if (detections[0].expressions.happy > scoringMetadata.laugh_detection_model_threshold)
       if (scorePlayer)
         happyFacedetected();  
   }, 1000)
@@ -64,4 +64,3 @@ document.getElementById('reveal_face').onclick = function () {
   else
     document.getElementById('video').classList.add('hide-video');
 }
-
