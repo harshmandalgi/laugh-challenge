@@ -63,7 +63,7 @@ function happyFacedetected() {
     snackNotif(Laugh[parseInt(Math.random() * Laugh.length)]);
 
   document.getElementById('score').innerHTML = currentScore + 1;
-  scorePlayer = false;
+  
 }
 
 

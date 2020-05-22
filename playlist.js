@@ -46,6 +46,7 @@ function startChallenge() {
       i++;
       // fetching videos from s3 link
       videoPlayer.src = boketLink+fileArray[i]+'.mp4';
+      scorePlayer = false;
       // fetching videos directly from array element text, in this case we are feeding URLs directly into playlist file
       // videoPlayer.src = fileArray[i];
       setTimeout(function() {
