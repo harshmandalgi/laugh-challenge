@@ -2,7 +2,7 @@
   "name": "laugh-challenge",
   "version": "1.0.0",
   "description": "Rules of the Challenge:",
-  "main": "face-api.min.js",
+  "main": "js/face-api.min.js",
   "dependencies": {
     "bootstrap": "^4.5.0"
   },

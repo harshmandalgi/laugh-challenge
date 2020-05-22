@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible">
     <title>Document</title>
-    <script defer src="face-api.min.js"></script>
+    <script defer src="js/face-api.min.js"></script>
     <script defer src="js/script.js"></script>
-    <script src="playlist.js"></script>
+    <script src="js/playlist.js"></script>
     <link href="css/main.css" rel="stylesheet">
 </head>
-<body class="bg-white text-center h-100">
+<body class="bg-white text-center d-flex h-100">
     <div class="container d-flex p-3 mx-auto flex-column">
-        <header class="mb-auto">
+        <header class="mb-5">
             <nav class="nav justify-content-center float-right">
                 <div class="nav-link">
                     <div class="custom-control custom-switch">
@@ -25,9 +25,9 @@
         </header>
 
         <main role="main">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="up centered-score">
+            <div class="row" style="margin-top: 30px;">
+                <div class="col-md-3">
+                    <div>
                         <button disabled="true" id='start-challenge' onclick='startChallenge()'>Start Challenge</button>
                         <br>
                         <p id='playlist-ready'>generating challenge playlist..</p>
@@ -36,12 +36,12 @@
                         <input checked id="reveal_face" name="reveal_face" type="checkbox">
                         <label for="reveal_face">Show webcam feed</label>
                     </div>
-                    <div class='down centered'>
+                    <div class='w-100'>
                         <video autoplay height="30%" id="video" muted width="85%"></video>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div id='rules'>
+                <div class="col-lg">
+                    <div id='rules' class="text-left w-100">
                         <p><strong>Rules of the 'Try Not To Laugh' Challenge:</strong></p>
                         <ul>
                             <li>You have to watch all the videos without smiling or laughing.</li>
@@ -51,11 +51,12 @@
                             </li>
                         </ul>
                     </div>
-
-                    <video autobuffer autoplay class="centered" controls height="60%" id="challenge" width="80%">
-                        <source type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div>
+                        <video autobuffer autoplay class="w-100" controls height="30%" id="challenge" width="40%">
+                            <source type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 </div>
             </div>
         </main>
