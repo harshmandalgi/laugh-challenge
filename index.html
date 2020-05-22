@@ -28,34 +28,36 @@
             <div class="row" style="margin-top: 30px;">
                 <div class="col-md-3">
                     <div>
-                        <button disabled="true" id='start-challenge' onclick='startChallenge()'>Start Challenge</button>
+                        <button class="btn btn-primary btn-lg btn-block" disabled="true" id='start-challenge' onclick='startChallenge()'>Start Challenge</button>
                         <br>
-                        <p id='playlist-ready'>generating challenge playlist..</p>
+                        <p class="text-center medium" id='playlist-ready'>Loading fetching challenges...</p>
                         <img alt="laugh emoji" height="100px" src="assets/laugh_emoji1.jpg" width="100px">
                         <h2>Score: <span id='score'>0</span></h2>
                         <input checked id="reveal_face" name="reveal_face" type="checkbox">
                         <label for="reveal_face">Show webcam feed</label>
                     </div>
-                    <div class='w-100'>
-                        <video autoplay height="30%" id="video" muted width="85%"></video>
+                    <div class='w-100 list-group-item'>
+                        <video autoplay height="30%" id="video" muted width="100%"></video>
                     </div>
                 </div>
                 <div class="col-lg">
                     <div id='rules' class="text-left w-100">
-                        <p><strong>Rules of the 'Try Not To Laugh' Challenge:</strong></p>
-                        <ul>
-                            <li>You have to watch all the videos without smiling or laughing.</li>
-                            <li>For every video, if you laugh or smile, score will be incremented by 1.</li>
-                            <li>To start the challenge, wait till the &#39;Challenge playlist&#39; is generated then press the &#39;Start
+                        <p class="text-left">Rules of the 'Try Not To Laugh' Challenge:</p>
+                        <ul class="list-group">
+                            <li class="list-group-item text-left">You have to watch all the videos without smiling or laughing.</li>
+                            <li class="list-group-item text-left">For every video, if you laugh or smile, score will be incremented by 1.</li>
+                            <li class="list-group-item text-left">To start the challenge, wait till the &#39;Challenge playlist&#39; is generated then press the &#39;Start
                                 Challenge&#39; button on top left corner.
                             </li>
+                            <li class="list-group-item">
+                                <div>
+                                    <video autobuffer autoplay class="w-100" controls height="100%" id="challenge" width="100%">
+                                        <source type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </li>
                         </ul>
-                    </div>
-                    <div>
-                        <video autobuffer autoplay class="w-100" controls height="30%" id="challenge" width="40%">
-                            <source type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
                     </div>
                 </div>
             </div>
