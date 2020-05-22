@@ -1,0 +1,8 @@
+{
+  "score_control_metadata": {
+    "laugh_detection_model_threshold": 0.5,
+    "score_degrade_constant": 2,
+    "score_degrade_exponential_factor": 2,
+    "item_score": 5
+  }
+}
