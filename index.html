@@ -1,44 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" >
-  <title>Document</title>
-  <script defer src="face-api.min.js"></script>
-  <script defer src="script.js"></script>
-  <script src="playlist.js"></script>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dark-mode.css" rel="stylesheet">
+
+    <meta http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <script defer src="face-api.min.js"></script>
+    <script defer src="script.js"></script>
+    <script src="playlist.js"></script>
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-  <div class='split left'>
-    <div class="up centered-score">
-      <button onclick='startChallenge()' id='start-challenge' disabled='true'>Start Challenge</button><br>
-      <p id='playlist-ready'>generating challenge playlist..</p>
-      <img height="100px" width="100px" src="laugh_emoji1.jpg" alt="laugh emoji">
-      <h2>Score: <span id='score'>0</span></h2>
-      <input type="checkbox" name="reveal_face" id="reveal_face" checked><label>Show webcam feed</label>
+<div class="container d-flex p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <nav class="nav justify-content-center float-right">
+            <div class="nav-link">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="darkSwitch">
+                    <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                </div>
+                <script src="js/dark-mode-switch.min.js"></script>
+            </div>
+        </nav>
+    </header>
+    <div class='split left'>
+        <div class="up centered-score">
+            <button disabled='true' id='start-challenge' onclick='startChallenge()'>Start Challenge</button>
+            <br>
+            <p id='playlist-ready'>generating challenge playlist..</p>
+            <img alt="laugh emoji" height="100px" src="laugh_emoji1.jpg" width="100px">
+            <h2>Score: <span id='score'>0</span></h2>
+            <input checked id="reveal_face" name="reveal_face" type="checkbox"><label>Show webcam feed</label>
+        </div>
+        <div class='down centered'>
+            <video autoplay height="30%" id="video" muted width="85%"></video>
+        </div>
     </div>
-    <div class='down centered'>
-      <video id="video" width="85%" height="30%" autoplay muted></video>
-    </div>  
-  </div>
-  
-  <div class='split right'>
-    <div id='rules'>
-      <p><strong>Rules of the 'Try Not To Laugh' Challenge:</strong></p>
-      <ul>
-        <li>You have to watch all the videos without smiling or laughing.</li>
-        <li>For every video, if you laugh or smile, score will be incremented by 1.</li>
-        <li>To start the challenge, wait till the &#39;Challenge playlist&#39; is generated then press the &#39;Start Challenge&#39; button on top left corner.</li>
-      </ul>
+
+    <div class='split right'>
+        <div id='rules'>
+            <p><strong>Rules of the 'Try Not To Laugh' Challenge:</strong></p>
+            <ul>
+                <li>You have to watch all the videos without smiling or laughing.</li>
+                <li>For every video, if you laugh or smile, score will be incremented by 1.</li>
+                <li>To start the challenge, wait till the &#39;Challenge playlist&#39; is generated then press the &#39;Start
+                    Challenge&#39; button on top left corner.
+                </li>
+            </ul>
+        </div>
+
+        <video autobuffer autoplay class="centered" controls height="60%" id="challenge" width="80%">
+            <source type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
-    
-    <video class="centered" id="challenge" height="60%" width="80%" autoplay autobuffer controls>
-      <source type="video/mp4">
-    Your browser does not support the video tag.
-    </video>
-  </div>
-  <div id="snackbar"></div>
+    <div id="snackbar"></div>
+</div>
 </body>
 </html>
