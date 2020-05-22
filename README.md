@@ -23,7 +23,7 @@ https://harshmandalgi.github.io/laugh-challenge/
 
 ### How do I build the Game 
 
-Laugh Challenge can be used as is, by linking in all of the necessary dependencies into the <head>.
+Laugh Challenge can be used as is, by linking in all of the necessary dependencies into the head.
 you will likely want to create source and minified versions of the concatenated JavaScript files by using
 Currently it only works on Desktop google chrome browser if you need to support other browsers and clients versions try contributing here.
 
