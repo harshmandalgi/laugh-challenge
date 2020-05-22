@@ -55,7 +55,6 @@ function happyFacedetected() {
     snackNotif(Laugh[parseInt(Math.random() * Laugh.length)]);
 
   document.getElementById('score').innerHTML = currentScore - (scoringMetadata.score_degrade_constant * scoringMetadata.score_degrade_exponential_factor);
-  scorePlayer = false;
 }
 
 document.getElementById('reveal_face').onclick = function () {
