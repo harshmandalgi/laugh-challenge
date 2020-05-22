@@ -13,6 +13,13 @@
 <body>
   <div class='split left'>
     <div class="up centered-score">
+      <label for="level">Choose difficulty:</label>
+      <select name="level" id="level">
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+        <!-- <option value="difficulty">Difficulty</option> -->
+      </select>
       <button onclick='startChallenge()' id='start-challenge' disabled='true'>Start Challenge</button><br>
       <p id='playlist-ready'>generating challenge playlist..</p>
       <img height="100px" width="100px" src="laugh_emoji1.jpg" alt="laugh emoji">

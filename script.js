@@ -48,13 +48,13 @@ video.addEventListener('play', () => {
 
 function happyFacedetected() {
   let currentScore = parseInt(document.getElementById('score').innerText);
-  if (currentScore == 0) {
-    snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);  
-  }  
+  if (currentScore == maxScore) {
+    snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);
+  }
   else
     snackNotif(Laugh[parseInt(Math.random() * Laugh.length)]);
 
-  document.getElementById('score').innerHTML = currentScore + 1;
+  document.getElementById('score').innerHTML = currentScore - (scoringMetadata.score_degrade_constant * scoringMetadata.score_degrade_exponential_factor);
   scorePlayer = false;
 }
 
