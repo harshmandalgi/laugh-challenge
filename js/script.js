@@ -6,7 +6,7 @@ var firstLaugh = [
 var Laugh = [
   'lol :D You laughed again',
   'You laughed?! :P '
-]; 
+];
 
 var noLaugh = [
   'Stone face!!',
@@ -21,7 +21,7 @@ Promise.all([
   // faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
   // faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
   faceapi.nets.faceExpressionNet.loadFromUri('./models'),
-  
+
 ]).then(startVideo);
 
 function startVideo() {
@@ -35,14 +35,14 @@ function startVideo() {
 startVideo();
 
 video.addEventListener('play', () => {
-  
+
   setInterval(async () => {
-    const detections = await faceapi.detectAllFaces(video, 
+    const detections = await faceapi.detectAllFaces(video,
       new faceapi.TinyFaceDetectorOptions())
       .withFaceExpressions()
     if (detections[0].expressions.happy > scoringMetadata.laugh_detection_model_threshold)
       if (scorePlayer)
-        happyFacedetected();  
+        happyFacedetected();
   }, 1000)
 });
 
