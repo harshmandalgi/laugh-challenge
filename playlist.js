@@ -12,7 +12,7 @@ request.onreadystatechange = function () {
           snackNotif('Challenge Playlist Ready!')
           document.getElementById('start-challenge').disabled = false;
           }, 2000);
-          // console.log(fileArray);
+          console.log(fileArray);
         }
     }
 }
