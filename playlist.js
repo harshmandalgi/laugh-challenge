@@ -1,4 +1,5 @@
 var fileArray;
+// fetching playlist from textfile on S3
 var request = new XMLHttpRequest();
 request.open('GET', 'https://laugh-challenge.s3.amazonaws.com/playlist.txt', true);
 request.send(null);
@@ -17,25 +18,36 @@ request.onreadystatechange = function () {
     }
 }
 
+// shuffle playlist
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
+
+// start challenge trigger
 function startChallenge() {
   fileArray = shuffle(fileArray);
   document.getElementById('start-challenge').disabled = true;
   var i = 0;
   boketLink = 'https://laugh-challenge.s3.amazonaws.com/';
+  // wait for the below time in ms to prevent scoring at the start of an video
+  // user may be smiling after previous video ends so we give a window of below mentioned time in which the score will not increase
   setTimeout(function() {
     scorePlayer = true;
   }, 3000);
   var videoPlayer = document.getElementById('challenge');
-  videoPlayer.src = boketLink+fileArray[0]+'.mp4';
+  // fetching videos from s3 link
+  // videoPlayer.src = boketLink+fileArray[0]+'.mp4';
+  // fetching videos directly from array element text, in this case we are feeding URLs directly into playlist file
+  videoPlayer.src = fileArray[0];
   videoPlayer.onended = function () {
     if (scorePlayer)
       snackNotif(noLaugh[parseInt(Math.random() * noLaugh.length)]);
     if (i < fileArray.length-1) {
       i++;
-      videoPlayer.src = boketLink+fileArray[i]+'.mp4';
+      // fetching videos from s3 link
+      //videoPlayer.src = boketLink+fileArray[i]+'.mp4';
+      // fetching videos directly from array element text, in this case we are feeding URLs directly into playlist file
+      videoPlayer.src = fileArray[i];
       setTimeout(function() {
         scorePlayer = true;
       }, 3000);
@@ -46,6 +58,7 @@ function startChallenge() {
   }
 }
 
+//snack notification function
 function snackNotif(message, duration=3000) {
   var snackbar = document.getElementById("snackbar");
   snackbar.innerHTML = message;
