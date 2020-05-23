@@ -40,7 +40,7 @@ video.addEventListener('play', () => {
     const detections = await faceapi.detectAllFaces(video,
       new faceapi.TinyFaceDetectorOptions())
       .withFaceExpressions()
-    if (detections && detections[0] && detections[0].expressions.happy > 0.3)
+    if (detections[0].expressions.happy > scoringMetadata.laugh_detection_model_threshold)
       if (scorePlayer)
         happyFacedetected();
   }, 1000)
@@ -48,14 +48,18 @@ video.addEventListener('play', () => {
 
 function happyFacedetected() {
   let currentScore = parseInt(document.getElementById('score').innerText);
+<<<<<<< HEAD
   if (currentScore == 0) {
     showNotificationAlert(firstLaugh[parseInt(Math.random() * firstLaugh.length)], false);
+=======
+  if (currentScore == maxScore) {
+    snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);
+>>>>>>> 2f3f164b7b92701670f6b8d571c0dd893691b22a
   }
   else
     showNotificationAlert(Laugh[parseInt(Math.random() * firstLaugh.length)], true);
 
-  document.getElementById('score').innerHTML = currentScore + 1;
-  scorePlayer = false;
+  document.getElementById('score').innerHTML = currentScore - (scoringMetadata.score_degrade_constant * scoringMetadata.score_degrade_exponential_factor);
 }
 
 document.getElementById('reveal_face').onclick = function () {
@@ -63,4 +67,8 @@ document.getElementById('reveal_face').onclick = function () {
     document.getElementById('video').classList.remove('hide-video');
   else
     document.getElementById('video').classList.add('hide-video');
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 2f3f164b7b92701670f6b8d571c0dd893691b22a
