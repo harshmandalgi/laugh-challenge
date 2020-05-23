@@ -70,7 +70,6 @@ function snackNotif(message, duration=3000) {
   setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, duration);
 }
 
-<<<<<<< HEAD
 /// showNotificationAlert function displays a notification passed in message parameter 
 /// also updates the laugh emoji element with a new image based on the isHappy parameter
 function showNotificationAlert(message, isHappy=false) {
@@ -82,7 +81,8 @@ function showNotificationAlert(message, isHappy=false) {
   } else {
     document.getElementById("laugh_emoji").src = "assets/sad.png";
   }
-=======
+}
+
 function loadJSON(callback, difficulty) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
@@ -100,5 +100,4 @@ function getScoringObject(difficulty, callback) {
         var parsedJson = JSON.parse(response)
         callback(parsedJson.score_control_metadata, difficulty)
     }, difficulty=difficulty);
->>>>>>> 2f3f164b7b92701670f6b8d571c0dd893691b22a
 }
