@@ -46,6 +46,9 @@ video.addEventListener('play', () => {
 
 function happyFacedetected() {
   let currentScore = parseInt(document.getElementById('score').innerText);
+
+  if (currentScore == 0) return  // Game over
+
   if (currentScore == maxScore) {
     snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);
   }
@@ -65,9 +68,7 @@ function happyFacedetected() {
     document.getElementById('challenge').pause()
     document.getElementById('start-challenge').disabled = false;
     document.getElementById('score').innerHTML = 0
-
-     var new_element = video.cloneNode(true);
-     old_element.parentNode.replaceChild(new_element, video);
+    return
   }
 
   document.getElementById('score').innerHTML = new_score;
