@@ -54,6 +54,7 @@ function startChallenge() {
       }, 3000);
     } else {
       // snackNotif('Challenge Complete', 5000);
+      alert('Challenge Complete! Your Score: ' + document.getElementById('score').innerText);
       document.getElementById('playlist-ready').innerHTML = 'Challenge Complete!';
     }
   }
