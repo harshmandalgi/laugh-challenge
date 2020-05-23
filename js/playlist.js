@@ -10,7 +10,7 @@ request.onreadystatechange = function () {
           fileArray = request.responseText.split('\n');
           setTimeout(function() {
             document.getElementById('playlist-ready').innerHTML = 'Challenge Playlist Ready!';
-          snackNotif('Challenge Playlist Ready!')
+          //snackNotif('Challenge Playlist Ready!')
           document.getElementById('start-challenge').disabled = false;
           }, 2000);
           console.log(fileArray);
@@ -41,7 +41,7 @@ function startChallenge() {
   // videoPlayer.src = fileArray[0];
   videoPlayer.onended = function () {
     if (scorePlayer)
-      snackNotif(noLaugh[parseInt(Math.random() * noLaugh.length)]);
+      // snackNotif(noLaugh[parseInt(Math.random() * noLaugh.length)]);
     if (i < fileArray.length-1) {
       i++;
       // fetching videos from s3 link
@@ -53,7 +53,7 @@ function startChallenge() {
         scorePlayer = true;
       }, 3000);
     } else {
-      snackNotif('Challenge Complete', 5000);
+      // snackNotif('Challenge Complete', 5000);
       document.getElementById('playlist-ready').innerHTML = 'Challenge Complete!';
     }
   }

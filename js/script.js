@@ -49,7 +49,7 @@ video.addEventListener('play', () => {
     if (detections && detections[0] && detections[0].expressions.happy > 0.3)
       if (scorePlayer)
         happyFacedetected();
-  }, 1000)
+  }, 300)
 });
 
 // this function triggers the score increment
@@ -57,11 +57,11 @@ video.addEventListener('play', () => {
 function happyFacedetected() {
   let currentScore = parseInt(document.getElementById('score').innerText);
   if (currentScore == 0) {
-    snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);
+    // snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);
   }
-  else
-    snackNotif(Laugh[parseInt(Math.random() * Laugh.length)]);
-
+  else {
+    // snackNotif(Laugh[parseInt(Math.random() * Laugh.length)]);
+  }
   document.getElementById('score').innerHTML = currentScore + 1;
   
 }
