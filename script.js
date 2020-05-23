@@ -23,6 +23,20 @@ Promise.all([
   
 ]).then(startVideo);
 
+
+function showPlaylistReady() {
+    document.getElementById('playlist-ready').innerHTML = 'Challenge Playlist Ready!';
+    snackNotif('Challenge Playlist Ready!')
+}
+
+function displayGameOver() {
+    snackNotif('Game over !!!', 5000);
+    document.getElementById('playlist-ready').innerHTML = 'Game over !!!'
+    document.getElementById('challenge').pause()
+    document.getElementById('start-challenge').disabled = false;
+    document.getElementById('score').innerHTML = 0
+}
+
 function startVideo() {
   navigator.getUserMedia(
     { video: {} },
@@ -62,11 +76,7 @@ function happyFacedetected() {
   current_score_degrade_constant = current_score_degrade_constant * scoringMetadata.score_degrade_exponential_factor
 
   if (new_score <= 0) {
-    snackNotif('Game over !!!', 5000);
-    document.getElementById('playlist-ready').innerHTML = 'Game over !!!'
-    document.getElementById('challenge').pause()
-    document.getElementById('start-challenge').disabled = false;
-    document.getElementById('score').innerHTML = 0
+    displayGameOver()
     return
   }
 

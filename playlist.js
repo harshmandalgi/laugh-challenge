@@ -12,8 +12,7 @@ request.onreadystatechange = function () {
         if (type.indexOf("text") !== 1) {
           fileArray = request.responseText.split('\n');
           setTimeout(function() {
-          document.getElementById('playlist-ready').innerHTML = 'Challenge Playlist Ready!';
-          snackNotif('Challenge Playlist Ready!')
+          showPlaylistReady()
           document.getElementById('start-challenge').disabled = false;
           }, 2000);
           // console.log(fileArray);
@@ -36,7 +35,7 @@ function playGame(metadata, difficulty) {
     document.getElementById('score').innerHTML = maxScore
 
     document.getElementById('start-challenge').disabled = true;
-    document.getElementById('playlist-ready').innerHTML = 'Challenge Playlist Ready!';
+    showPlaylistReady()
 
      var i = 0;
       boketLink = 'https://laugh-challenge.s3.amazonaws.com/';
