@@ -64,10 +64,10 @@ function happyFacedetected() {
   if (currentScore == 0) return  // Game over
 
   if (currentScore == maxScore) {
-    snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);
+    showNotificationAlert(firstLaugh[parseInt(Math.random() * firstLaugh.length)], false);
   }
   else
-    snackNotif(Laugh[parseInt(Math.random() * Laugh.length)]);
+    showNotificationAlert(Laugh[parseInt(Math.random() * firstLaugh.length)], true);
 
   // New score
   var new_score = currentScore - current_score_degrade_constant;
