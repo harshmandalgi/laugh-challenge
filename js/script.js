@@ -49,10 +49,10 @@ video.addEventListener('play', () => {
 function happyFacedetected() {
   let currentScore = parseInt(document.getElementById('score').innerText);
   if (currentScore == 0) {
-    snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);
+    showNotificationAlert(firstLaugh[parseInt(Math.random() * firstLaugh.length)], false);
   }
   else
-    snackNotif(Laugh[parseInt(Math.random() * Laugh.length)]);
+    showNotificationAlert(Laugh[parseInt(Math.random() * firstLaugh.length)], true);
 
   document.getElementById('score').innerHTML = currentScore + 1;
   scorePlayer = false;
@@ -64,4 +64,3 @@ document.getElementById('reveal_face').onclick = function () {
   else
     document.getElementById('video').classList.add('hide-video');
 }
-

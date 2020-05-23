@@ -52,3 +52,16 @@ function snackNotif(message, duration=3000) {
   snackbar.className = "show";
   setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, duration);
 }
+
+/// showNotificationAlert function displays a notification passed in message parameter 
+/// also updates the laugh emoji element with a new image based on the isHappy parameter
+function showNotificationAlert(message, isHappy=false) {
+  self.snackNotif(message)
+  
+  //Update the laugh emoji with a new icon
+  if (isHappy) {
+    document.getElementById("laugh_emoji").src = "assets/happy.png";
+  } else {
+    document.getElementById("laugh_emoji").src = "assets/sad.png";
+  }
+}
