@@ -14,7 +14,6 @@ var noLaugh = [
 ];
 
 const video = document.getElementById('video');
-var scorePlayer = false;
 
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
@@ -35,14 +34,13 @@ function startVideo() {
 startVideo();
 
 video.addEventListener('play', () => {
-  
   setInterval(async () => {
-    const detections = await faceapi.detectAllFaces(video, 
+    const detections = await faceapi.detectAllFaces(video,
       new faceapi.TinyFaceDetectorOptions())
       .withFaceExpressions()
+
     if (detections[0].expressions.happy > scoringMetadata.laugh_detection_model_threshold)
-      if (scorePlayer)
-        happyFacedetected();  
+        happyFacedetected();
   }, 1000)
 });
 
@@ -54,7 +52,25 @@ function happyFacedetected() {
   else
     snackNotif(Laugh[parseInt(Math.random() * Laugh.length)]);
 
-  document.getElementById('score').innerHTML = currentScore - (scoringMetadata.score_degrade_constant * scoringMetadata.score_degrade_exponential_factor);
+  // New score
+  var new_score = currentScore - current_score_degrade_constant;
+
+  // Next degrade value
+  current_score_degrade_constant = current_score_degrade_constant * scoringMetadata.score_degrade_exponential_factor
+
+  if (new_score <= 0) {
+    snackNotif('Game over !!!', 5000);
+    document.getElementById('playlist-ready').innerHTML = 'Game over !!!'
+    document.getElementById('challenge').load()
+    document.getElementById('challenge').pause()
+    document.getElementById('start-challenge').disabled = false;
+    document.getElementById('score').innerHTML = 0
+
+     var new_element = video.cloneNode(true);
+     old_element.parentNode.replaceChild(new_element, video);
+  }
+
+  document.getElementById('score').innerHTML = new_score;
 }
 
 document.getElementById('reveal_face').onclick = function () {

@@ -1,6 +1,8 @@
 var fileArray;
 var scoringMetadata;
 var maxScore;
+var current_score_degrade_constant;
+
 var request = new XMLHttpRequest();
 request.open('GET', 'https://laugh-challenge.s3.amazonaws.com/playlist.txt', true);
 request.send(null);
@@ -10,7 +12,7 @@ request.onreadystatechange = function () {
         if (type.indexOf("text") !== 1) {
           fileArray = request.responseText.split('\n');
           setTimeout(function() {
-            document.getElementById('playlist-ready').innerHTML = 'Challenge Playlist Ready!';
+          document.getElementById('playlist-ready').innerHTML = 'Challenge Playlist Ready!';
           snackNotif('Challenge Playlist Ready!')
           document.getElementById('start-challenge').disabled = false;
           }, 2000);
@@ -25,16 +27,19 @@ function shuffle(array) {
 
 function playGame(metadata, difficulty) {
     scoringMetadata = metadata
+
+    current_score_degrade_constant = scoringMetadata.score_degrade_constant
+
     fileArray = shuffle(fileArray);
 
     maxScore = fileArray.length * scoringMetadata.item_score
     document.getElementById('score').innerHTML = maxScore
 
     document.getElementById('start-challenge').disabled = true;
+    document.getElementById('playlist-ready').innerHTML = 'Challenge Playlist Ready!';
+
      var i = 0;
-      boketLink = `https://laugh-challenge.s3.amazonaws.com/${difficulty}/`;
-      // testing
-      // boketLink = 'https://laugh-challenge.s3.amazonaws.com/';
+      boketLink = 'https://laugh-challenge.s3.amazonaws.com/';
       console.log(boketLink)
       setTimeout(function() {
         scorePlayer = true;
@@ -53,6 +58,7 @@ function playGame(metadata, difficulty) {
         } else {
           snackNotif('Challenge Complete', 5000);
           document.getElementById('playlist-ready').innerHTML = 'Challenge Complete!';
+          document.getElementById('start-challenge').disabled = false;
         }
       }
 }
