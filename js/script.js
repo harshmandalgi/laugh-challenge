@@ -46,7 +46,7 @@ video.addEventListener('play', () => {
     const detections = await faceapi.detectAllFaces(video,
       new faceapi.TinyFaceDetectorOptions())
       .withFaceExpressions()
-    if (detections && detections[0] && detections[0].expressions.happy > 0.3)
+    if (detections[0].expressions.happy > scoringMetadata.laugh_detection_model_threshold)
       if (scorePlayer)
         happyFacedetected();
   }, 300)
@@ -56,14 +56,14 @@ video.addEventListener('play', () => {
 // to enable increment in score, scoreplayer var should be true 
 function happyFacedetected() {
   let currentScore = parseInt(document.getElementById('score').innerText);
-  if (currentScore == 0) {
+  if (currentScore == maxScore) {
     // snackNotif(firstLaugh[parseInt(Math.random() * firstLaugh.length)]);
   }
-  else {
+  else
     // snackNotif(Laugh[parseInt(Math.random() * Laugh.length)]);
-  }
-  document.getElementById('score').innerHTML = currentScore + 1;
-  
+
+  document.getElementById('score').innerHTML = currentScore - (scoringMetadata.score_degrade_constant * scoringMetadata.score_degrade_exponential_factor);
+
 }
 
 
@@ -75,4 +75,3 @@ document.getElementById('reveal_face').onclick = function () {
   else
     document.getElementById('video').classList.add('hide-video');
 }
-

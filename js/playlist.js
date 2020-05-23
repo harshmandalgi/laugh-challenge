@@ -1,5 +1,10 @@
 var fileArray;
+
 // fetching playlist from textfile on S3
+
+var scoringMetadata;
+var maxScore;
+
 var request = new XMLHttpRequest();
 request.open('GET', 'https://laugh-challenge.s3.amazonaws.com/playlist.txt', true);
 request.send(null);
@@ -23,40 +28,46 @@ function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-// start challenge trigger
-function startChallenge() {
-  fileArray = shuffle(fileArray);
-  document.getElementById('start-challenge').disabled = true;
-  var i = 0;
-  boketLink = 'https://laugh-challenge.s3.amazonaws.com/';
-  // wait for the below time in ms to prevent scoring at the start of an video
-  // user may be smiling after previous video ends so we give a window of below mentioned time in which the score will not increase
-  setTimeout(function() {
-    scorePlayer = true;
-  }, 3000);
-  var videoPlayer = document.getElementById('challenge');
-  // fetching videos from s3 link
-  videoPlayer.src = boketLink+fileArray[0]+'.mp4';
-  // fetching videos directly from array element text, in this case we are feeding URLs directly into playlist file
-  // videoPlayer.src = fileArray[0];
-  videoPlayer.onended = function () {
-    if (scorePlayer)
-      // snackNotif(noLaugh[parseInt(Math.random() * noLaugh.length)]);
-    if (i < fileArray.length-1) {
-      i++;
-      // fetching videos from s3 link
-      videoPlayer.src = boketLink+fileArray[i]+'.mp4';
-      scorePlayer = false;
-      // fetching videos directly from array element text, in this case we are feeding URLs directly into playlist file
-      // videoPlayer.src = fileArray[i];
+
+function playGame(metadata, difficulty) {
+    scoringMetadata = metadata
+    fileArray = shuffle(fileArray);
+
+    maxScore = fileArray.length * scoringMetadata.item_score
+    document.getElementById('score').innerHTML = maxScore
+
+    document.getElementById('start-challenge').disabled = true;
+     var i = 0;
+      boketLink = `https://laugh-challenge.s3.amazonaws.com/${difficulty}/`;
+      // testing
+      // boketLink = 'https://laugh-challenge.s3.amazonaws.com/';
+      console.log(boketLink)
       setTimeout(function() {
         scorePlayer = true;
       }, 3000);
-    } else {
-      // snackNotif('Challenge Complete', 5000);
-      document.getElementById('playlist-ready').innerHTML = 'Challenge Complete!';
-    }
-  }
+      var videoPlayer = document.getElementById('challenge');
+      videoPlayer.src = boketLink+fileArray[0]+'.mp4';
+      videoPlayer.onended = function () {
+        if (scorePlayer)
+          // snackNotif(noLaugh[parseInt(Math.random() * noLaugh.length)]);
+        if (i < fileArray.length-1) {
+          i++;
+          videoPlayer.src = boketLink+fileArray[i]+'.mp4';
+          setTimeout(function() {
+            scorePlayer = true;
+          }, 3000);
+        } else {
+          // snackNotif('Challenge Complete', 5000);
+          document.getElementById('playlist-ready').innerHTML = 'Challenge Complete!';
+        }
+      }
+}
+
+function startChallenge() {
+  var difficultyDropDown = document.getElementById('level')
+  var difficulty = difficultyDropDown.options[difficultyDropDown.selectedIndex].value
+  getScoringObject(difficulty=difficulty, callback=playGame)
+
 }
 
 //snack notification function
@@ -65,4 +76,23 @@ function snackNotif(message, duration=3000) {
   snackbar.innerHTML = message;
   snackbar.className = "show";
   setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, duration);
+}
+
+function loadJSON(callback, difficulty) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', `https://laugh-challenge.s3.amazonaws.com/${difficulty}_metadata.json`, true);
+    xobj.onreadystatechange = function() {
+        if (xobj.readyState === 4 && xobj.status === 200) {
+            callback(xobj.responseText);
+        }
+    };
+    xobj.send(null);
+}
+
+function getScoringObject(difficulty, callback) {
+    loadJSON(function(response) {
+        var parsedJson = JSON.parse(response)
+        callback(parsedJson.score_control_metadata, difficulty)
+    }, difficulty=difficulty);
 }

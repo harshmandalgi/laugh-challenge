@@ -28,9 +28,17 @@
             <div class="row" style="margin-top: 30px;">
                 <div class="col-md-3">
                     <div>
-                        <button class="btn btn-primary btn-lg btn-block" id='start-challenge' onclick='startChallenge()'>Start Challenge</button>
+                        <select class="dropdown-toggle btn btn-secondary btn-lg btn-block" name="level" id="level">
+                            <option class="text-left" value="beginner">Beginner</option>
+                            <option class="text-left" value="intermediate">Intermediate</option>
+                            <option class="text-left" value="advanced">Advanced</option>
+                        </select>
                         <br>
-                        <p class="text-center medium" id='playlist-ready'>Fetching challenges...</p>
+
+                        <button class="btn btn-primary btn-lg btn-block text-left" id='start-challenge' onclick='startChallenge()'>Start Challenge</button>
+                        <br>
+                        <p class="btn btn-secondary btn-lg btn-block text-left medium" id='playlist-ready'>Loading fetching challenges...</p>
+
                         <img alt="laugh emoji" height="100px" src="assets/laugh_emoji1.jpg" width="100px">
                         <h2>Score: <span id='score'>0</span></h2>
                         <input checked id="reveal_face" name="reveal_face" type="checkbox">
