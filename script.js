@@ -64,7 +64,6 @@ function happyFacedetected() {
   if (new_score <= 0) {
     snackNotif('Game over !!!', 5000);
     document.getElementById('playlist-ready').innerHTML = 'Game over !!!'
-    document.getElementById('challenge').load()
     document.getElementById('challenge').pause()
     document.getElementById('start-challenge').disabled = false;
     document.getElementById('score').innerHTML = 0
