@@ -34,6 +34,7 @@ function displayGameOver() {
     document.getElementById('playlist-ready').innerHTML = 'Game over !!!'
     document.getElementById('challenge').pause()
     document.getElementById('start-challenge').disabled = false;
+    alert("Your Score is: " + document.getElementById('score').innerText)
     document.getElementById('score').innerHTML = 0
 }
 
