@@ -23,8 +23,6 @@ These instructions will get you a copy of the project up and running on your loc
 3. There have been many reactions to "Try Not to Laugh" compilations, which can be found on YouTube.
 4. The player can also change the challenge difficulty which limits the number of videos the game will test the player.
 
-### Where can I see a demo
-https://harshmandalgi.github.io/laugh-challenge/
 
 ### Contributions
 
